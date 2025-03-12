@@ -1,5 +1,6 @@
 # npm-analyzer-light
-Optimized and efficient sequential multi-object tracker
+Optimized and efficient sequential multi-object tracker: run "python npm_analyzer_light.py"
+
 ![image](https://github.com/user-attachments/assets/51b87db6-274a-4170-9469-46db6c942658)
 # Why?
 My previous project, [https://github.com/nolan-cummins/npm-analyzer](url), leveraged multithreading to simultaneous process frame-differencing-based object tracking using OpenCV. However, the data structure utilized and the inherent overhead to processing, in real-time, hundreds to thousands of objects imposed significant delay, taking upwards of an hour to analyze 10-20, 30-second long recordings. 
