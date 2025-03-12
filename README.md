@@ -13,3 +13,13 @@ The Global Interpreter Lock (GIL) is a mutex that protects access to Python obje
 Previously, the program would append information about each newly added object in a top-down dictionary, meaning the more objects detected, the slower it became to retrieve and parse data, particularly since the values were unknown and irretrievable, or I should say, not indexable without the key. Now, instead, we save the detected object information into a new object, and append to a dictionary within that object with only one level: {"frame number": "OpenCV box2D"}. 
 
 Now, instead of parsing through every single frame, we can instead retain the most relevant detected objects and instantly retrieve, with little delay, the box2D struct from our frame of choosing, with a single for loop. This reduced the processing time for a single video from 15-20 minutes, to approximately 20-30 seconds. Technically, it takes about 1 minute, as we must first run through the entire video and apply the filters from videoLoader before performing the analysis, but nevertheless, a significant improvement.
+
+# .csv Structure
+This was designed to use in conjunction with my [https://github.com/nolan-cummins/npm](url) project and experimental setup. During my experiments, I record the actual timestamp with high precision alongside various measurables, such as voltage, current, etc. As such, during data analysis, I needed to assign each frame with its actual timestamp. Therefore, the output from this repo is the following format:
+- Rows = object count (arbitrary)
+- Columns = frame number
+
+For any object in a given frame we have 3 elements:
+1. x change in position (pixels from previous frame), y change in position (pixels from previous frame)
+2. area in pixels²
+3. x center position (pixel), y center position (pixel)
